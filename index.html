@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Latihan Controller</title>
+  <script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+  <div ng-app="bukuApp">
+    <div ng-controller="MyController">
+      Cari Buku :<input type="text" ng-model="hasil">
+      <div>
+        <ul ng-repeat="b in book | filter:hasil | orderBy:'id'">
+          <li>Kode  :   {{b.kode}}</li>
+          <li>Nama  :   {{b.judul}}</li>
+          <li>Harga   : {{b.harga}}</li>
+          <li>Penulis : {{b.penulis}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+  var book = angular.module('bukuApp', []);
+  book.controller('MyController',function($scope){
+    $scope.book = [
+      {kode:'Java',judul:'Java EE Programming',harga:'Rp.80000',penulis:'Rahman dkk'},
+      {kode:'javascript',judul:'Javascript 2014',harga:'Rp.70000',penulis:'Rully'},
+      {kode:'net',judul:'Advanced .Net platform',harga:'Rp.65000',penulis:'Rloio'},
+      {kode:'php',judul:'Php legacy code',harga:'Rp.80000',penulis:'Ruzman'}
+    ];
+  });
+</script>
